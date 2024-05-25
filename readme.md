@@ -10,6 +10,10 @@
 
 * install go and add the go path to bash profile
 
+```
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+```
 ### Running
 
 ```
