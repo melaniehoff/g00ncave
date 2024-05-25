@@ -1,5 +1,6 @@
 # g00n cave
 
+![](g00ncave.jpg)
 
 ### Dependencies
 
