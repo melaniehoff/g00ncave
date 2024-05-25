@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>g00n cave</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    body {
+        background: black;
+    }
+
+    video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+    }
+
+</style>
+</head>
+<body>
+<video id="videoPlayer" autoplay="true" playsinline style="pointer-events: none;"
+    muted="muted"></video>
+<script>
+    
+console.log("hello g00n cave");
+
+
+const sexed = "https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/VIDEO-organizers%2Bteachers.mp4?v=1716362762293"
+
+// const videos = ["https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/0116_20231001_235500_01.mp4?v=1716442448540"];
+const videos = [
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/19C310ED-4463-4D46-A168-2A15C29F7DC0.mp4?v=1716392441825",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/beautifulmessmusic%20tik%20tok.mp4?v=1716392442889",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Death%20Proof_s%20Final%20scene.mp4?v=1716392451879",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/dhq.mp4?v=1716392452841",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/FujiSanJam.mp4?v=1716392454120",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/gouyad.mp4?v=1716392454968",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/lion%20king%20long%20live%20the%20king.mp4?v=1716392469717",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Luke%20Rockhold%20smears%20blood%20on%20Costa.mp4?v=1716392470309",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/lunerrelationshipgoals.mp4?v=1716392470748",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Nailea%20Devora%20and%20Stevan%20Journey%20in%20_I%20____%20YOU_%2C%20a%20short%20film%20by%20Sarah%20Bahbah..mp4?v=1716392474167",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Onyx.ashanti.mp4?v=1716392485647",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/saturn.mp4?v=1716392502460",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/thatDJset.mp4?v=1716392506786",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Thehouseisblack.mp4?v=1716392508061",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/toni%20morrison%20on%20beloved.mp4?v=1716392508738",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Waves.mp4?v=1716392512195",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Snaptik.app_7308818425856511238.mp4?v=1716395458106",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Snaptik.app_7359965063115001131.mp4?v=1716395458985",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Snaptik.app_7224436336084700458.mp4?v=1716395459779",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/%E2%80%9CI%20want%20to%20know%20you%E2%80%A6%E2%80%9D%20Abbott%20Elementary%20Season%202%20Ep%2022%20-%20Season%20finale.mp4?v=1716395460649",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Peaceful%20Waterfall%20Sounds%20%23relaxation%20%23naturesounds.mp4?v=1716395461321",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Meshell%20Ndegeocello%20-%20Love%20Song%20-%20Live%20In%20Paris%202023.mp4?v=1716395465696",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/IMG_7441.mp4?v=1716395466016",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/IMG_6691.mp4?v=1716395466400",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/IMG_3118.mp4?v=1716395466811",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Healthy%20Fruit%20Salad%20%23shorts.mp4?v=1716395469684",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Death%20Proof's%20Final%20scene.mp4?v=1716395471999",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Death%20Proof%20Lap%20Dance%20Uncut.mp4?v=1716395475706",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Snapinsta.app_video_10000000_789192002644237_7174362342753002958_n.mp4?v=1716395476658",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Snapinsta.app_video_434668002_446662297926175_8287733426098128136_n.mp4?v=1716395477487",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Snapinsta.app_video_434512292_805347061617172_3222870592797552571_n.mp4?v=1716395478101",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Snapinsta.app_video_434667888_1166817681159623_2824798600485849896_n.mp4?v=1716395478582",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Bound%20(1996)%20-%20Gina%20Gershon%20%26%20Jennifer%20Tilly%20%EF%BD%9C%20Kissing%20Scene.mp4?v=1716398316263",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Cleaning%20Geoduck.mp4?v=1716398318845",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Daisies%20-%20Food%20Fight!.mp4?v=1716398320376",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Deer%20in%20the%20park.mp4?v=1716398321132",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Detection%20of%20Occlusal%20Dysfunction%20-%20Dental%20Hygienist's%20Role.mp4?v=1716398322883",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/nailsseafood.mp4?v=1716399669698",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Falling%20to%20the%20Floor%20Kiss%20%EF%BD%9C%20Saving%20Face%20%EF%BD%9C%20Now%20Playing.mp4?v=1716400204362",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Mating%20Leopard%20Slugs.mp4?v=1716400205107",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Dancing%203.mp4?v=1716407472660",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Dancing%204.mp4?v=1716407473393",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/IMG_1160%20(1).mp4?v=1716407474497",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Juiciest%20Tomato.mp4?v=1716407475954",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Leaning%20Tree%20Rehearsal%20Fernando%20Melo.mp4?v=1716407477446",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Power%20Tools%202.mp4?v=1716407480259",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Power%20Tools%204.mp4?v=1716407483358",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Power%20Tools%205.mp4?v=1716407484364",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Power%20Tools.mp4?v=1716407484982",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/that%20scorpion%20tiktok.mp4?v=1716407485542",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Japanese%20man%20spends%20US%2414%2C000%20to%20turn%20himself%20into%20a%20dog.mp4?v=1716408049863",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Canal%20Side.MOV.mp4?v=1716408328495",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Cat.MOV.mp4?v=1716408329002",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Cats%20Licking.MOV.mp4?v=1716408331075",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/IMG_0686.MOV.mp4?v=1716408333921",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Scissors.mp4?v=1716408347589",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Mina%20-%20Ancora%20ancora%20ancora%20(1978).mp4?v=1716408347623",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Shane%20And%20Carmen%20Kiss%20-%20The%20L%20Word%202x01%20Scene.mp4?v=1716408410133",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/IMG_9299.MOV.mp4?v=1716408417494",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Spectacular%20Footage%20of%20a%20Butterfly%20Leaving%20Its%20Cocoon.mp4?v=1716408489994",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/IMG_9300.MOV.mp4?v=1716408743327",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Lake%20Side.MOV.mp4?v=1716408744094",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Soup%20Dumpling.MOV.mp4?v=1716408744721",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Sunset.MOV.mp4?v=1716408745744",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/powertools.mp4?v=1716408765270",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/outdoors.mp4?v=1716408768255",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/happytogether.mp4?v=1716408768929",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Tampopo%20%EF%BD%9C%20The%20Egg%20Kiss.mp4?v=1716408769700",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/mulberry.MOV.mp4?v=1716408930741",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/orange.MOV.mp4?v=1716408931327",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/peach.MOV.mp4?v=1716408932021",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/Yoga%20Bridge.MOV.mp4?v=1716408932696",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/sauna.mp4?v=1716409096465",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/MVI_9473.MOV.mp4?v=1716409165008",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/MVI_9488.MOV.mp4?v=1716409165403",
+"https://cdn.glitch.me/1a0435e3-0e9f-4e51-b823-a9435ea5af56/trimbath.mp4?v=1716409173058",
+"https://cdn.glitch.global/1a0435e3-0e9f-4e51-b823-a9435ea5af56/PORN-FOR-THE-BLIND-final-2.mp4?v=1716409274161",
+  ];
+
+let playRate = 1;
+let playInOrder = false;
+let counterCycle = 0;
+
+const videoPlayer = document.getElementById('videoPlayer');
+function playRandomVideo() { 
+
+    let randomIndex = Math.floor(Math.random() * videos.length);
+    if (playInOrder == true && counterCycle > 0) {
+        randomIndex = (counterCycle-1);
+    }
+    const randomVideo = videos[randomIndex];
+    
+    console.log(randomIndex);
+    console.log(randomVideo);
+    
+    videoPlayer.setAttribute('src', randomVideo);
+    videoPlayer.playbackRate = playRate;
+    videoPlayer.play();
+
+    // console.log(randomVideo);
+}
+
+videoPlayer.addEventListener('ended', playRandomVideo);
+
+playRandomVideo();
+
+
+
+
+
+
+
+
+// function randomIntFromInterval(min, max) {
+//   // min and max included
+//   return Math.floor(Math.random() * (max - min + 1) + min);
+// }
+
+
+window.addEventListener("broadcast", function(event){
+
+    var message = event.detail;
+    console.log("BROADCAST RECEIVED");
+    console.log(message.action);
+
+    if (message.action == "switch"){
+        playRandomVideo();
+    }
+
+    if (message.action == "faster"){
+         playRate = 5.0;
+         videoPlayer.playbackRate = playRate;
+
+    }
+
+    if (message.action == "slower"){
+         playRate = .2;
+         videoPlayer.playbackRate = playRate;
+    }
+
+    if (message.action == "normal-speed"){
+         playRate = 1;
+         videoPlayer.playbackRate = playRate;
+      
+    }
+
+    if (message.action == "one-video"){
+    let cycleVideo = videos[counterCycle];
+    videoPlayer.setAttribute('src', cycleVideo);
+
+    console.log(counterCycle);
+    console.log(videos[counterCycle]);
+
+    counterCycle += 1
+
+    if (counterCycle == videos.length) {
+        counterCycle = 0;
+    }
+
+    playInOrder = true;
+    
+    }
+
+
+
+    if (message.action == "one-half"){
+        let randVal = Math.floor(Math.random() * 100);
+        console.log(randVal);
+        if (randVal <= 50){
+            console.log("in the one half");
+            playRandomVideo();
+        } else {
+            console.log("NOT in the one half");
+        }
+      
+    }
+
+
+if (message.action == "refresh"){
+        console.log("refresh");
+         location.reload();
+      
+    }
+
+
+
+  if (message.action == "blackout"){
+
+    style = window.getComputedStyle(videoPlayer),
+    display = style.getPropertyValue('display');
+console.log(display);
+
+    if (display == "block"){
+        videoPlayer.style.display = "none";
+    } else {
+        videoPlayer.style.display = "block";
+    }
+          
+    }
+
+
+    if (message.action == "sexed"){
+        console.log("sexed");
+         videoPlayer.setAttribute('src', sexed);
+      
+    }
+
+
+
+    // actions[message.action](message.value);
+})
+
+
+
+        (async () => {
+          if (window.caches) {
+            const c = await window.caches.open('g00ncave');
+            const m = (await c.match(src)) || (await c.add(src), await c.match(src));
+            blob = await m.blob();
+          } else {
+            blob = await (await fetch(src)).blob();
+          }
+          URL.revokeObjectURL(videoEl.src)
+          videoEl.src = URL.createObjectURL(blob);
+        })();
+
+
+
+
+</script>
+</body>
+</html>
